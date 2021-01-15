@@ -1,0 +1,28 @@
+html
+  head
+    meta(charset='utf-8')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= title
+    
+    script.
+      // use view name passed from express server
+      var view = '#{ view }';
+    
+    link(rel='stylesheet' href='css/normalize.css')
+    link(rel='stylesheet/less' href='less/framework.less')
+    - var path = 'less/' + view + '.less'
+    link(rel='stylesheet/less' href= path)
+    
+    // ChartJS -- client-side JS
+    - var path = 'js/' + view + '/lib/chart.bundle.min.js'
+    script(id="main" type='text/javascript' src= path)
+
+    
+    - var bodyID = "View-" + view
+    body(id= bodyID class="template")
+      h1= view
+      div(class="chart")
+      canvas(id="myChart" width="400" height="400")
+      
+    - var path = 'js/' + view + '/chart-test.js'  
+    script(id="main" type='text/javascript' src= path)

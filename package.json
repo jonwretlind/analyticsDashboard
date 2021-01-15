@@ -1,0 +1,38 @@
+{
+  "name": "analyticsdashboard",
+  "version": "1.0.0",
+  "description": "Analytics Dashboard for the Saafire Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonwretlind/analytics-dashboard.git"
+  },
+  "author": "Jon C. Wretlind",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonwretlind/analytics-dashboard/issues"
+  },
+  "homepage": "https://github.com/jonwretlind/analytics-dashboard#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "chartjs-node": "^1.7.1",
+    "connect-redis": "^3.4.1",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "project-version": "^1.2.0",
+    "pug": "^2.0.3",
+    "redis": "^2.8.0",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "chart": "^0.1.2",
+    "chartjs": "^0.3.24",
+    "node-adwords": "^201809.0.2"
+  }
+}

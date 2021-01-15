@@ -1,0 +1,464 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800');
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+
+@saafireBlue: #0303C9;
+@saafireBlueLt: #b2d9f7;
+@saafireGray: #42424F;
+@saafireGrayLt: #7A7A89;
+@buttonColor: @saafireBlue;
+@buttonColorRoll: @saafireBlueLt;
+@red: #ff003b;
+@transRed: #ff003b33;
+@blue: #00bbff;
+@transBlue: #00bbff33;
+
+
+/* COMMON BREAKPOINTS FOR MOBILE DEVICES */
+@mobSm: 320px;
+@mobMd: 768px;
+@mobLg: 980px;
+@deskSm: 1200px;
+@deskMd: 1400px;
+@deskLg: 1600px;
+@maxWidth: 1800px;
+@adminPanelWidth: 20vw;
+
+// variables
+@unit: 10px;
+
+/* GRID SYSTEM */
+.container {
+  padding: @unit;
+}
+
+/*
+@gridParams: 16; // number of total grid units, based on Golden Mean
+@gridUnit: (100% / @gridParams); // unit used for grid elements
+
+  .container (@i) when (@i > 0) {
+        .grid-@{i} {
+          width: (@gridUnit * @i);
+        }
+        .container(@i - 1); // increment
+  }
+  .container(@gridParams); // output the grid units
+*/
+
+/* MIXINS */
+.saafire-sheen {
+  background: linear-gradient(160deg, @saafireBlue, white, @saafireBlueLt, @saafireBlue,);
+}
+
+.panel-bg {
+  background: linear-gradient(180deg, #ccc, white, #ccc);
+}
+
+.btn {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  background-color: @saafireBlue;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  text-align: center;
+  font-weight: 700;
+  font-size: .9rem;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  &:hover {
+    background-color: @buttonColorRoll;
+  }
+}
+
+.btn-small {
+  .btn();
+  width: 20px;
+  height: 20px;
+}
+
+.btn-left {
+  .btn();
+  margin-left: -38px;
+}
+
+.btn-right {
+  .btn();
+  margin-left: 100%;
+}
+
+.saafire-bg {
+  background-image: url('../assets/images/RGB_bg-screen-1.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  background-color: @saafireBlue;
+  background-repeat: no-repeat;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+  font-size: .7rem;
+  font-weight: 200;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+div[id^="saf_"] {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif !important;
+  font-weight: 200;
+}
+
+&.dev {
+  .editable {
+    border: 1px dotted transparent;
+    &:hover {
+      border: 1px dotted @saafireBlue;
+      background-color: @transBlue;
+    }
+  }
+}
+
+section, article, div {
+  transition: all 0.5s ease;
+}
+
+/* ADMIN PANEL */
+#adminPanel {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: @adminPanelWidth;
+  border: 1px solid @saafireGrayLt;
+  .panel-bg();
+  z-index: 99999;
+  .shadow();
+  font-family: "Open Sans", Arial, Helvetica, sans-serif !important;
+
+  &.hidden {
+    left: -@adminPanelWidth;
+  }
+
+    #saafireLogo {
+      position: absolute;
+      left: @unit;
+      width: 250px;
+      height: 74px;
+      background-image: url('/assets/images/RGB_Dark-bg-RVS@2x.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .bg {
+      position: absolute;
+      width: 100%;
+      height: 80px;
+      top: 0px;
+      background-color: @saafireBlue;
+      z-index: -1;
+    }
+
+    .rule {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      top: 80px;
+      background-color: @saafireGray;
+      opacity: .5;
+    }
+
+    .panel-btn {
+      .btn-right();
+      .shadow();
+      top: 0px;
+      background-image: url('/assets/images/RGB_sm-icon@0.5x.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      &:hover {
+        opacity: .6;
+      }
+    }
+
+    .admin-panel-content {
+      display: block;
+      border: none;
+      margin-top: 80px;
+      padding: @unit;
+      width: calc(@adminPanelWidth - @unit);
+      height: calc(100vh - 80px - @unit);
+
+
+      ul.admin-btns {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+      }
+
+      li.admin-btn {
+        margin-left: auto;
+        margin-right: auto;
+        width: calc(@adminPanelWidth - (@unit * 2));
+        min-height: 40px;
+        background-color: white;
+        margin-bottom: @unit;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 calc(@unit * 2);
+        border: 1px solid @saafireGrayLt;
+        cursor: pointer;
+
+        &:first-child {
+          background-color: @saafireBlueLt;
+        }
+
+        &:hover {
+          background-color: @saafireBlue;
+          a {
+            color: white;
+          }
+        }
+
+      }
+
+      a.admin-btn-link {
+        font-family: 'Open Sans', sans-serif;
+        color: #42424F;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: .8rem;
+        font-weight: 200;
+        letter-spacing: 1;
+        border: none;
+      }
+    }// .admin-panel-content
+}// #adminPanel
+
+
+#PageWrapper.admin {
+  margin-left: @adminPanelWidth !important;
+}
+
+#LoginMessage {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 99999;
+  font-size: .8rem;
+  color: @saafireBlue;
+  .user {
+    background-color: @saafireBlueLt;
+    padding: 3px;
+  }
+}
+
+
+
+/* BREAKPOINT BAR */
+#bpBar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: @maxWidth;
+  min-height: 20px;
+  height: 20px;
+  overflow: hidden;
+  background-color: rgba(0,0,0,.2);
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  top: -20px;
+
+    div[class*="desk"] {
+      border-left: 1px solid @red;
+      border-right: 1px solid @red;
+      position: relative;
+      margin: 0 auto;
+      background-color: @transRed;
+      min-height: inherit;
+      margin-top: -.8%;
+          &.deskLg {
+             width: calc(@deskLg - 2px);
+          }
+          &.deskMd {
+              width: calc(@deskMd - 2px);
+          }
+          &.deskSm {
+                width: calc(@deskSm - 2px);
+          }
+        }
+
+    div[class*="mob"] {
+      border-left: 1px solid @blue;
+      border-right: 1px solid @blue;
+      position: relative;
+      margin: 0 auto;
+      background-color: @transBlue;
+      min-height: inherit;
+      margin-top: -.8%;
+        &.mobLg {
+          width: calc(@mobLg - 2px);
+        }
+        &.mobMd {
+          width: calc(@mobMd - 2px);
+        }
+          &.mobSm {
+            width: calc(@mobSm - 2px);
+        }
+      }
+}/* #bpBar */
+
+/* EDITOR */
+.edit-area {
+    padding: 0;
+    border: none;
+    width: 100%;
+    height: inherit;
+    float: left;
+
+    .edit {
+      display: block;
+      border-color: @buttonColor;
+      font-weight: inherit;
+      font-style: inherit;
+      font-size: inherit;
+      color: inherit;
+      text-align: inherit;
+      .shadow();
+    }
+}
+
+.editable {
+  padding: 2px;
+  &.hide {
+    display: none;
+  }
+}
+
+.save-btn {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  background-color: @buttonColor;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  margin-left: -18px;
+  text-align: center;
+  font-weight: 700;
+  font-size: .9rem;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+    &:hover {
+      background-color: @buttonColorRoll;
+    }
+}
+
+
+/* LOGIN SCREEN */
+#saf_Login {
+  position: relative;
+  width: 35vw;
+  border: 1px solid @saafireGray;
+  background-color: @saafireBlue;
+  color: white;
+  margin: 0 auto;
+  margin-top: 10vh;
+  .shadow();
+
+  .logo {
+    max-width: 250px;
+    height: auto;
+    position: relative;
+    margin: 0 auto 20px auto;
+  }
+
+  .login-wrapper {
+    text-align: : center;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+
+    .login-form {
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+        div {
+          margin-top: 20px;
+          width: 100%;
+          label {
+            margin-right: 10px;
+          }
+          input {
+            width: 50%;
+            min-width: 250px;
+            font-size: 1.2rem;
+            border: none;
+          }
+          input[type="submit"] {
+            font-size: 1rem;
+            padding: 10px;
+            border: 1px solid @saafireGrayLt;
+            background-color: @saafireBlueLt;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 30px;
+          }
+        }
+    }
+  }
+}
+
+
+// Last - get current view template
+@import "dashboard.less";

@@ -1,0 +1,30 @@
+html
+  head
+    meta(charset='utf-8')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title= title
+    
+    script.
+      // use view name passed from express server
+      var view = '#{ view }';
+
+    script(id="requireJS" type='text/javascript' src='js/lib/require.js')
+    script(id="main" type='text/javascript' src='js/main.js')
+
+    link(rel='stylesheet' href='css/normalize.css')
+    link(rel='stylesheet/less' href='less/framework.less')
+    - var path = 'less/' + view + '.less'
+    link(rel='stylesheet/less' href= path)
+        
+  - var bodyID = "View-" + view
+  body(id= bodyID class="template")
+    div(id="LoginMessage", class="login-msg")
+    div(id="PageWrapper" class="container page-wrapper")
+  
+      script.
+        var username = '#{ username }';
+      div(id="PageHeader")
+        h1(class="lg-page-header") Marketing Data Mine
+        img(src="assets/saafire-gem-header.png" class="header-gem")
+      
+      include inc/dashboard.pug

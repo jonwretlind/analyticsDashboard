@@ -1,0 +1,22 @@
+{
+  "_id": "0eab65bb494c6240c0c1859a9a000254",
+  "username": "admin",
+  "email": "design@jonwretlind.com",
+  "password": "password",
+  "role": "admin",
+  "firstname": "Jon",
+  "lastname": "Wretlind",
+  "company_name": "Beyond Blue Media",
+  "title": "Senior Developer",
+  "address": {
+    "street": "111 E. 4th St",
+    "line2": "Ste. 319",
+    "city": "Loveland",
+    "state": "CO",
+    "zip": "80537",
+    "country": "United States",
+  },
+  "phone": "9702187712",
+  "profile_img": "jon.jpg",
+  "bio": "Donec non condimentum nulla. Mauris vulputate nisi quis urna finibus commodo. Duis vitae ligula at felis tincidunt scelerisque. Sed consectetur accumsan mollis."
+}
